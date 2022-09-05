@@ -1,35 +1,37 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import {
-  decreaseItemQuantity,
-  increaseItemQuantity, removeItemFromCart,
+  decreaseProductQuantity,
+  increaseProductQuantity,
+  removeProductFromCart,
+} from "../../redux/cart/actions";
+import { addProduct, decreaseProduct } from "../../redux/products/actions";
 
-} from "../../Redux/cart/action";
-import { addItem, decreaseItem } from "../../Redux/items/action";
-
-const CartItem = ({ id, itemName, addedQuantity }) => {
+const CartProduct = ({ id, productName, addedQuantity }) => {
+  //dispatch to dispatch the actions
   const dispatch = useDispatch();
-
-  //increase product quantity of the cart
+  
+  //function to increase product quantity in cart
   const incrementHandler = (id) => {
-    dispatch(increaseItemQuantity(id, 1));
-    dispatch(addItem(id, 1));
+    dispatch(increaseProductQuantity(id, 1));
+    dispatch(addProduct(id, 1));
   };
 
-  //decrease product quantity of the cart
+  //function to decrease product quantity in cart
   const decrementHandler = (id) => {
     if (addedQuantity > 1) {
-      dispatch(decreaseItemQuantity(id, 1));
-      dispatch(decreaseItem(id, 1));
+      dispatch(decreaseProductQuantity(id, 1));
+      dispatch(decreaseProduct(id, 1));
     } else {
-      dispatch(removeItemFromCart(id));
-      dispatch(decreaseItem(id, 1));
+      dispatch(removeProductFromCart(id));
+      dispatch(decreaseProduct(id, 1));
     }
   };
+
   return (
     <div className="flex justify-between border-b-2 mb-2">
       <div className="text-lg py-2">
-        <p>{itemName}</p>
+        <p>{productName}</p>
       </div>
       <div className="text-lg py-2">
         <div className="flex flex-row space-x-2 w-full items-center rounded-lg">
@@ -78,4 +80,4 @@ const CartItem = ({ id, itemName, addedQuantity }) => {
   );
 };
 
-export default CartItem;
+export default CartProduct;

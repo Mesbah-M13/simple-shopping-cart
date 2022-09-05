@@ -1,7 +1,7 @@
-import './App.css';
-import Items from './Components/Items/Items';
-import CartTotalPrice from './Components/Cart/CartTotalPrice';
-import Cart from './Components/Cart/Cart';
+import "./App.css";
+import Cart from "./components/Cart/Cart";
+import CartTotal from "./components/Cart/CartTotal";
+import Products from "./components/Products/Products";
 
 function App() {
   return (
@@ -13,15 +13,12 @@ function App() {
           </h1>
         </div>
         <div className="grid grid-cols-12 gap-6">
-          {/*  List of  Shop Items */}
-          <Items />
+          <Products />
 
           <div className="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
-            {/* Cart products*/}
-            <Cart/>
+            <Cart />
 
-            {/* Total Price of All  Products in the cart*/}
-            <CartTotalPrice/>
+            <CartTotal />
           </div>
         </div>
       </div>
